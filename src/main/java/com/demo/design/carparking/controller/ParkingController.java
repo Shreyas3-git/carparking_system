@@ -6,6 +6,7 @@ import com.demo.design.carparking.entity.ParkingSpotType;
 import com.demo.design.carparking.entity.Vehicle;
 import com.demo.design.carparking.service.CheckInService;
 import com.demo.design.carparking.service.CheckoutService;
+import com.demo.design.carparking.service.ReservationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,15 +23,21 @@ import java.util.Optional;
 @RequestMapping("/api/parking")
 public class ParkingController
 {
-    @Autowired
-    private CheckInService checkInService;
-    @Autowired
-    private CheckoutService checkoutService;
+    private final CheckInService checkInService;
+    private final CheckoutService checkoutService;
+    private final ReservationService reservationService;
 
-
+    public ParkingController(
+            CheckInService checkInService,
+            CheckoutService checkoutService,
+            ReservationService reservationService) {
+        this.checkInService = checkInService;
+        this.checkoutService = checkoutService;
+        this.reservationService = reservationService;
+    }
     @PostMapping("/check-in")
-    public ResponseEntity<CommonResponse> checkIn(@Valid @RequestBody Vehicle request) {
-        return checkInService.checkIn(request);
+    public ResponseEntity<CommonResponse> checkIn(@Valid @RequestBody Vehicle request,Long floor) {
+        return checkInService.checkIn(request,floor);
     }
 
     @PostMapping("/check-out/{licensePlate}")
@@ -51,6 +58,17 @@ public class ParkingController
     public ResponseEntity<Long> getAvailableSpots(@PathVariable ParkingSpotType type) {
         return ResponseEntity.ok(checkInService.getAvailableSpotsCount(type));
     }
+
+    @PostMapping("/reserve")
+    public ResponseEntity<CommonResponse> reserveSpot(@Valid @RequestBody Vehicle request, @RequestParam Long floorId) {
+        return reservationService.reserveSpot(request, floorId);
+    }
+
+    @PostMapping("/cancel-reservation/{licensePlate}")
+    public ResponseEntity<CommonResponse> cancelReservation(@PathVariable String licensePlate) {
+        return reservationService.cancelReservation(licensePlate);
+    }
+
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)

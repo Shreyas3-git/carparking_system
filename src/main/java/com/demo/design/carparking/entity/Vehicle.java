@@ -18,7 +18,6 @@ public class Vehicle
 
     @Enumerated(EnumType.STRING)
     @NotNull(message = "VehicleType can't be null")
-    @NotBlank(message = "VehicleType can't be blank")
     private VehicleType type;
 
     @NotNull(message = "entryTime can't be null")
@@ -29,6 +28,7 @@ public class Vehicle
     public String getLicensePlate() { return licensePlate; }
     public VehicleType getType() { return type; }
     public LocalDateTime getEntryTime() { return entryTime; }
+
 
     public static class VehicleBuilder {
         private String licensePlate;

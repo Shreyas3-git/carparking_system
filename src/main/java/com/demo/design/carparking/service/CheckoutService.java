@@ -30,36 +30,37 @@ public class CheckoutService
     private VehicleRepository vehicleRepository;
     @Autowired
     private ParkingTransactionRepository transactionRepository;
-    @Autowired
-    private ParkingAllocationStrategy allocationStrategy;
+    private final ParkingAllocationStrategy allocationStrategy;
     @Autowired
     private FeeCalculationStrategy feeStrategy;
 
+    public CheckoutService(ParkingAllocationStrategy allocationStrategy) {
+        this.allocationStrategy = allocationStrategy;
+    }
 
     @Transactional
     public ResponseEntity<CommonResponse> checkOut(String licensePlate, LocalDateTime exitTime) {
+        log.info("Vehicle checkout with license plate: {} at {}", licensePlate, exitTime);
         Vehicle vehicle = vehicleRepository.findById(licensePlate)
                 .orElseThrow(() -> new NotFoundException("Vehicle not found: " + licensePlate));
 
         ParkingSpot spot = spotRepository.findAll().stream()
                 .filter(s -> s.getVehicle() != null && s.getVehicle().getLicensePlate().equals(licensePlate))
                 .findFirst()
-                .orElseThrow(() -> new IllegalStateException("Parking spot not found"));
+                .orElseThrow(() -> new NotFoundException("Parking spot not found for vehicle: " + licensePlate));
 
         double fee = feeStrategy.calculateFee(vehicle, exitTime);
         spot.release();
         spotRepository.save(spot);
 
-        ParkingTransaction transaction = transactionRepository.findAll().stream()
-                .filter(t -> t.getVehicle().getLicensePlate().equals(licensePlate))
-                .findFirst()
+        ParkingTransaction transaction = transactionRepository.findActiveTransactionByLicensePlate(licensePlate)
                 .orElseThrow(() -> new NotFoundException("Parking transaction not found for vehicle: " + licensePlate));
 
         transaction.completeTransaction(exitTime, fee);
         transactionRepository.save(transaction);
 
         CommonResponse response = new CommonResponse.CommonResponseBuilder()
-                .message("Checkout successful. Fee: " + fee)
+                .message("Checkout successful. Fee: $" + fee)
                 .status("SUCCESS")
                 .timestamp(LocalDateTime.now())
                 .build();

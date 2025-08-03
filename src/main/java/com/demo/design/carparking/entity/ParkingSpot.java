@@ -16,8 +16,12 @@ public class ParkingSpot
     private boolean occupied;
 
     @OneToOne
-    @JoinColumn(name = "vehicle_license_plate")
+    @JoinColumn(name = "license_plate")
     private Vehicle vehicle;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "floor_id")
+    private ParkingFloor floor;
 
     private ParkingSpot() {}
 
@@ -25,6 +29,10 @@ public class ParkingSpot
     public ParkingSpotType getType() { return type; }
     public boolean isOccupied() { return occupied; }
     public Vehicle getVehicle() { return vehicle; }
+
+    public ParkingFloor getFloor() {
+        return floor;
+    }
 
     public void occupy(Vehicle vehicle) {
         this.vehicle = vehicle;
@@ -40,7 +48,7 @@ public class ParkingSpot
         private ParkingSpotType type;
         private boolean occupied;
         private Vehicle vehicle;
-
+        private ParkingFloor floor;
         public ParkingSpotBuilder type(ParkingSpotType type) {
             this.type = type;
             return this;
@@ -56,11 +64,17 @@ public class ParkingSpot
             return this;
         }
 
+        public ParkingSpotBuilder floor(ParkingFloor floor) {
+            this.floor = floor;
+            return this;
+        }
+
         public ParkingSpot build() {
             ParkingSpot parkingSpot = new ParkingSpot();
             parkingSpot.type = this.type;
             parkingSpot.vehicle = this.vehicle;
             parkingSpot.occupied = this.occupied;
+            parkingSpot.floor = this.floor;
             return parkingSpot;
         }
     }
