@@ -11,6 +11,9 @@ import com.demo.design.carparking.repository.ParkingSpotRepository;
 import com.demo.design.carparking.repository.ParkingTransactionRepository;
 import com.demo.design.carparking.repository.VehicleRepository;
 import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -19,19 +22,18 @@ import java.time.LocalDateTime;
 @Service
 public class CheckoutService
 {
-    private final ParkingSpotRepository spotRepository;
-    private final VehicleRepository vehicleRepository;
-    private final ParkingTransactionRepository transactionRepository;
-    private final ParkingAllocationStrategy allocationStrategy;
-    private final FeeCalculationStrategy feeStrategy;
+    private static final Logger log = LoggerFactory.getLogger(CheckInService.class);
 
-    public CheckoutService(ParkingSpotRepository spotRepository, VehicleRepository vehicleRepository, ParkingTransactionRepository transactionRepository, ParkingAllocationStrategy allocationStrategy, FeeCalculationStrategy feeStrategy) {
-        this.spotRepository = spotRepository;
-        this.vehicleRepository = vehicleRepository;
-        this.transactionRepository = transactionRepository;
-        this.allocationStrategy = allocationStrategy;
-        this.feeStrategy = feeStrategy;
-    }
+    @Autowired
+    private ParkingSpotRepository spotRepository;
+    @Autowired
+    private VehicleRepository vehicleRepository;
+    @Autowired
+    private ParkingTransactionRepository transactionRepository;
+    @Autowired
+    private ParkingAllocationStrategy allocationStrategy;
+    @Autowired
+    private FeeCalculationStrategy feeStrategy;
 
 
     @Transactional
