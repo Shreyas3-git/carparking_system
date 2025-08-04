@@ -3,7 +3,7 @@ package com.demo.design.carparking.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "parking_spot")
+@Table(name = "parking_spots")
 public class ParkingSpot
 {
     @Id
@@ -12,11 +12,11 @@ public class ParkingSpot
 
     @Enumerated(EnumType.STRING)
     private ParkingSpotType type;
-
+    @Column(name = "occupied")
     private boolean occupied;
 
     @OneToOne
-    @JoinColumn(name = "license_plate")
+    @JoinColumn(name = "vehicle_license_plate", referencedColumnName = "license_plate")
     private Vehicle vehicle;
 
     @ManyToOne(fetch = FetchType.LAZY)

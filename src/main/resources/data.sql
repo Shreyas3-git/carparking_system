@@ -1,4 +1,5 @@
-INSERT INTO parking_floors(floor_id, total_spots) VALUES
+
+INSERT IGNORE INTO parking_floors (floor_id, total_spots) VALUES
 (1, 30),
 (2, 30),
 (3, 30),
@@ -12,8 +13,9 @@ INSERT INTO parking_floors(floor_id, total_spots) VALUES
 (11, 30);
 
 
+
 -- Floor 1
-INSERT INTO parking_spot (type, occupied, vehicle_license_plate, floor_id) VALUES
+INSERT IGNORE INTO parking_spots (type, occupied, vehicle_license_plate, floor_id) VALUES
 ('SMALL', false, NULL, 1), ('SMALL', false, NULL, 1), ('SMALL', false, NULL, 1), ('SMALL', false, NULL, 1), ('SMALL', false, NULL, 1),
 ('SMALL', false, NULL, 1), ('SMALL', false, NULL, 1), ('SMALL', false, NULL, 1), ('SMALL', false, NULL, 1), ('SMALL', false, NULL, 1),
 ('MEDIUM', false, NULL, 1), ('MEDIUM', false, NULL, 1), ('MEDIUM', false, NULL, 1), ('MEDIUM', false, NULL, 1), ('MEDIUM', false, NULL, 1),
@@ -22,7 +24,7 @@ INSERT INTO parking_spot (type, occupied, vehicle_license_plate, floor_id) VALUE
 ('LARGE', false, NULL, 1), ('LARGE', false, NULL, 1), ('LARGE', false, NULL, 1), ('LARGE', false, NULL, 1), ('LARGE', false, NULL, 1);
 
 -- Floor 2
-INSERT INTO parking_spot (type, occupied, vehicle_license_plate, floor_id) VALUES
+INSERT IGNORE INTO parking_spots (type, occupied, vehicle_license_plate, floor_id) VALUES
 ('SMALL', false, NULL, 2), ('SMALL', false, NULL, 2), ('SMALL', false, NULL, 2), ('SMALL', false, NULL, 2), ('SMALL', false, NULL, 2),
 ('SMALL', false, NULL, 2), ('SMALL', false, NULL, 2), ('SMALL', false, NULL, 2), ('SMALL', false, NULL, 2), ('SMALL', false, NULL, 2),
 ('MEDIUM', false, NULL, 2), ('MEDIUM', false, NULL, 2), ('MEDIUM', false, NULL, 2), ('MEDIUM', false, NULL, 2), ('MEDIUM', false, NULL, 2),
@@ -31,7 +33,7 @@ INSERT INTO parking_spot (type, occupied, vehicle_license_plate, floor_id) VALUE
 ('LARGE', false, NULL, 2), ('LARGE', false, NULL, 2), ('LARGE', false, NULL, 2), ('LARGE', false, NULL, 2), ('LARGE', false, NULL, 2);
 
 -- Floor 3
-INSERT INTO parking_spot (type, occupied, vehicle_license_plate, floor_id) VALUES
+INSERT IGNORE INTO parking_spots (type, occupied, vehicle_license_plate, floor_id) VALUES
 ('SMALL', false, NULL, 3), ('SMALL', false, NULL, 3), ('SMALL', false, NULL, 3), ('SMALL', false, NULL, 3), ('SMALL', false, NULL, 3),
 ('SMALL', false, NULL, 3), ('SMALL', false, NULL, 3), ('SMALL', false, NULL, 3), ('SMALL', false, NULL, 3), ('SMALL', false, NULL, 3),
 ('MEDIUM', false, NULL, 3), ('MEDIUM', false, NULL, 3), ('MEDIUM', false, NULL, 3), ('MEDIUM', false, NULL, 3), ('MEDIUM', false, NULL, 3),
@@ -40,7 +42,7 @@ INSERT INTO parking_spot (type, occupied, vehicle_license_plate, floor_id) VALUE
 ('LARGE', false, NULL, 3), ('LARGE', false, NULL, 3), ('LARGE', false, NULL, 3), ('LARGE', false, NULL, 3), ('LARGE', false, NULL, 3);
 
 -- Floor 4
-INSERT INTO parking_spot (type, occupied, vehicle_license_plate, floor_id) VALUES
+INSERT IGNORE INTO parking_spots(type, occupied, vehicle_license_plate, floor_id) VALUES
 ('SMALL', false, NULL, 4), ('SMALL', false, NULL, 4), ('SMALL', false, NULL, 4), ('SMALL', false, NULL, 4), ('SMALL', false, NULL, 4),
 ('SMALL', false, NULL, 4), ('SMALL', false, NULL, 4), ('SMALL', false, NULL, 4), ('SMALL', false, NULL, 4), ('SMALL', false, NULL, 4),
 ('MEDIUM', false, NULL, 4), ('MEDIUM', false, NULL, 4), ('MEDIUM', false, NULL, 4), ('MEDIUM', false, NULL, 4), ('MEDIUM', false, NULL, 4),
@@ -49,7 +51,7 @@ INSERT INTO parking_spot (type, occupied, vehicle_license_plate, floor_id) VALUE
 ('LARGE', false, NULL, 4), ('LARGE', false, NULL, 4), ('LARGE', false, NULL, 4), ('LARGE', false, NULL, 4), ('LARGE', false, NULL, 4);
 
 -- Floor 5
-INSERT INTO parking_spot (type, occupied, vehicle_license_plate, floor_id) VALUES
+INSERT IGNORE INTO parking_spots (type, occupied, vehicle_license_plate, floor_id) VALUES
 ('SMALL', false, NULL, 5), ('SMALL', false, NULL, 5), ('SMALL', false, NULL, 5), ('SMALL', false, NULL, 5), ('SMALL', false, NULL, 5),
 ('SMALL', false, NULL, 5), ('SMALL', false, NULL, 5), ('SMALL', false, NULL, 5), ('SMALL', false, NULL, 5), ('SMALL', false, NULL, 5),
 ('MEDIUM', false, NULL, 5), ('MEDIUM', false, NULL, 5), ('MEDIUM', false, NULL, 5), ('MEDIUM', false, NULL, 5), ('MEDIUM', false, NULL, 5),
@@ -58,7 +60,7 @@ INSERT INTO parking_spot (type, occupied, vehicle_license_plate, floor_id) VALUE
 ('LARGE', false, NULL, 5), ('LARGE', false, NULL, 5), ('LARGE', false, NULL, 5), ('LARGE', false, NULL, 5), ('LARGE', false, NULL, 5);
 
 -- Floor 6
-INSERT INTO parking_spot (type, occupied, vehicle_license_plate, floor_id) VALUES
+INSERT IGNORE INTO parking_spots (type, occupied, vehicle_license_plate, floor_id) VALUES
 ('SMALL', false, NULL, 6), ('SMALL', false, NULL, 6), ('SMALL', false, NULL, 6), ('SMALL', false, NULL, 6), ('SMALL', false, NULL, 6),
 ('SMALL', false, NULL, 6), ('SMALL', false, NULL, 6), ('SMALL', false, NULL, 6), ('SMALL', false, NULL, 6), ('SMALL', false, NULL, 6),
 ('MEDIUM', false, NULL, 6), ('MEDIUM', false, NULL, 6), ('MEDIUM', false, NULL, 6), ('MEDIUM', false, NULL, 6), ('MEDIUM', false, NULL, 6),
@@ -67,7 +69,7 @@ INSERT INTO parking_spot (type, occupied, vehicle_license_plate, floor_id) VALUE
 ('LARGE', false, NULL, 6), ('LARGE', false, NULL, 6), ('LARGE', false, NULL, 6), ('LARGE', false, NULL, 6), ('LARGE', false, NULL, 6);
 
 -- Floor 7
-INSERT INTO parking_spot (type, occupied, vehicle_license_plate, floor_id) VALUES
+INSERT IGNORE INTO parking_spots (type, occupied, vehicle_license_plate, floor_id) VALUES
 ('SMALL', false, NULL, 7), ('SMALL', false, NULL, 7), ('SMALL', false, NULL, 7), ('SMALL', false, NULL, 7), ('SMALL', false, NULL, 7),
 ('SMALL', false, NULL, 7), ('SMALL', false, NULL, 7), ('SMALL', false, NULL, 7), ('SMALL', false, NULL, 7), ('SMALL', false, NULL, 7),
 ('MEDIUM', false, NULL, 7), ('MEDIUM', false, NULL, 7), ('MEDIUM', false, NULL, 7), ('MEDIUM', false, NULL, 7), ('MEDIUM', false, NULL, 7),
@@ -76,7 +78,7 @@ INSERT INTO parking_spot (type, occupied, vehicle_license_plate, floor_id) VALUE
 ('LARGE', false, NULL, 7), ('LARGE', false, NULL, 7), ('LARGE', false, NULL, 7), ('LARGE', false, NULL, 7), ('LARGE', false, NULL, 7);
 
 -- Floor 8
-INSERT INTO parking_spot (type, occupied, vehicle_license_plate, floor_id) VALUES
+INSERT IGNORE INTO parking_spots (type, occupied, vehicle_license_plate, floor_id) VALUES
 ('SMALL', false, NULL, 8), ('SMALL', false, NULL, 8), ('SMALL', false, NULL, 8), ('SMALL', false, NULL, 8), ('SMALL', false, NULL, 8),
 ('SMALL', false, NULL, 8), ('SMALL', false, NULL, 8), ('SMALL', false, NULL, 8), ('SMALL', false, NULL, 8), ('SMALL', false, NULL, 8),
 ('MEDIUM', false, NULL, 8), ('MEDIUM', false, NULL, 8), ('MEDIUM', false, NULL, 8), ('MEDIUM', false, NULL, 8), ('MEDIUM', false, NULL, 8),
@@ -85,7 +87,7 @@ INSERT INTO parking_spot (type, occupied, vehicle_license_plate, floor_id) VALUE
 ('LARGE', false, NULL, 8), ('LARGE', false, NULL, 8), ('LARGE', false, NULL, 8), ('LARGE', false, NULL, 8), ('LARGE', false, NULL, 8);
 
 -- Floor 9
-INSERT INTO parking_spot (type, occupied, vehicle_license_plate, floor_id) VALUES
+INSERT IGNORE INTO parking_spots (type, occupied, vehicle_license_plate, floor_id) VALUES
 ('SMALL', false, NULL, 9), ('SMALL', false, NULL, 9), ('SMALL', false, NULL, 9), ('SMALL', false, NULL, 9), ('SMALL', false, NULL, 9),
 ('SMALL', false, NULL, 9), ('SMALL', false, NULL, 9), ('SMALL', false, NULL, 9), ('SMALL', false, NULL, 9), ('SMALL', false, NULL, 9),
 ('MEDIUM', false, NULL, 9), ('MEDIUM', false, NULL, 9), ('MEDIUM', false, NULL, 9), ('MEDIUM', false, NULL, 9), ('MEDIUM', false, NULL, 9),
@@ -94,7 +96,7 @@ INSERT INTO parking_spot (type, occupied, vehicle_license_plate, floor_id) VALUE
 ('LARGE', false, NULL, 9), ('LARGE', false, NULL, 9), ('LARGE', false, NULL, 9), ('LARGE', false, NULL, 9), ('LARGE', false, NULL, 9);
 
 -- Floor 10
-INSERT INTO parking_spot (type, occupied, vehicle_license_plate, floor_id) VALUES
+INSERT IGNORE INTO parking_spots (type, occupied, vehicle_license_plate, floor_id) VALUES
 ('SMALL', false, NULL, 10), ('SMALL', false, NULL, 10), ('SMALL', false, NULL, 10), ('SMALL', false, NULL, 10), ('SMALL', false, NULL, 10),
 ('SMALL', false, NULL, 10), ('SMALL', false, NULL, 10), ('SMALL', false, NULL, 10), ('SMALL', false, NULL, 10), ('SMALL', false, NULL, 10),
 ('MEDIUM', false, NULL, 10), ('MEDIUM', false, NULL, 10), ('MEDIUM', false, NULL, 10), ('MEDIUM', false, NULL, 10), ('MEDIUM', false, NULL, 10),
@@ -103,7 +105,7 @@ INSERT INTO parking_spot (type, occupied, vehicle_license_plate, floor_id) VALUE
 ('LARGE', false, NULL, 10), ('LARGE', false, NULL, 10), ('LARGE', false, NULL, 10), ('LARGE', false, NULL, 10), ('LARGE', false, NULL, 10);
 
 -- Floor 11
-INSERT INTO parking_spot (type, occupied, vehicle_license_plate, floor_id) VALUES
+INSERT IGNORE INTO parking_spots (type, occupied, vehicle_license_plate, floor_id) VALUES
 ('SMALL', false, NULL, 11), ('SMALL', false, NULL, 11), ('SMALL', false, NULL, 11), ('SMALL', false, NULL, 11), ('SMALL', false, NULL, 11),
 ('SMALL', false, NULL, 11), ('SMALL', false, NULL, 11), ('SMALL', false, NULL, 11), ('SMALL', false, NULL, 11), ('SMALL', false, NULL, 11),
 ('MEDIUM', false, NULL, 11), ('MEDIUM', false, NULL, 11), ('MEDIUM', false, NULL, 11), ('MEDIUM', false, NULL, 11), ('MEDIUM', false, NULL, 11),

@@ -13,7 +13,7 @@ public class ParkingTransaction
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "license_plate")
+    @JoinColumn(name = "vehicle_license_plate", referencedColumnName = "license_plate")
     private Vehicle vehicle;
 
     private LocalDateTime entryTime;
